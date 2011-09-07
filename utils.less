@@ -1,0 +1,76 @@
+#utils {
+	// Gradient
+	.gradient(@start: #ffffff, @end: #EDEDED) {
+	    background: @start;
+	    background: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end));
+	    background: -moz-linear-gradient(-90deg, @start, @end);
+	    filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr=%d, endColorstr=%d)", @start, @end);   /*  IE6 & 7 */
+	    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr=%d, endColorstr=%d)", @start, @end);  /*  IE8 */
+	}
+	
+	// Gradient With Image
+	.gradientPlus(@start: #ffffff, @end: #EDEDED, @url: url(/common/images/blank.png)) {
+		background: @start, @url center center no-repeat;
+	    background: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end)), @url;
+	    background: -moz-linear-gradient(-90deg, @start, @end), @url;
+	    filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr=%d, endColorstr=%d)", @start, @end);   /*  IE6 & 7 */
+	    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr=%d, endColorstr=%d)", @start, @end);  /*  IE8 */
+		
+	}
+
+	// Shadows
+	.shadow(@x: 3px, @y: 3px, @blur: 5px, @color: #333) {
+	    box-shadow: @x @y @blur @color;
+	    -moz-box-shadow: @x @y @blur @color;
+	    -webkit-box-shadow: @x @y @blur @color;
+	}
+
+	// Rounded Corner with extended attributes
+	.roundedExpanded(@radius: 3px, @tl: 0, @tr: 0, @br: 0, @bl: 0) {
+	    // Webkit
+	    -webkit-border-top-right-radius: @radius + @tr;
+	    -webkit-border-top-left-radius: @radius + @tl;
+	    -webkit-border-bottom-right-radius: @radius + @br;
+	    -webkit-border-bottom-left-radius: @radius + @bl;
+	    // Firefox
+	    -moz-border-radius-topleft: @radius + @tl;
+	    -moz-border-radius-topright: @radius + @tr;
+	    -moz-border-radius-bottomright: @radius + @br;
+	    -moz-border-radius-bottomleft: @radius + @bl;
+	    // Implemented Standard
+	    border-top-right-radius: @radius + @tr;
+	    border-top-left-radius: @radius + @tl;
+	    border-bottom-right: @radius + @br;
+	    border-bottom-left: @radius + @bl;
+	}
+
+	// Basic Rounded Corner
+	.rounded(@radius: 3px) {
+	    -webkit-border-radius: @radius;
+	    -moz-border-radius: @radius;
+	    border-radius: @radius;
+	}
+    
+        .textShadow(@x: 0, @y: 0, @blur: 5, @color: #333) {
+            text-shadow: ~"@{x}px @{y}px @{blur}px @{color}";
+            filter: ~"dropshadow(color=@color, offx=@x, offy=@y)";
+        }
+        
+        .coverBackgroundImage(@url) {
+            background: url("@{url}") no-repeat center center;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .columns(@columns: 2, @gap: 15px) {
+            -moz-column-count: @columns;
+            -moz-column-gap: @gap;
+            -webkit-column-count: @columns;
+            -webkit-column-gap: @gap;
+            column-count: @columns;
+            column-gap: @gap;
+        }
+
+}
